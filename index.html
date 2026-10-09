@@ -243,10 +243,39 @@ footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 footer b{color:var(--fg)}
 @media (max-width:700px){footer .wrap{grid-template-columns:1fr}}
 
+@page{size:A4;margin:14mm 0}
 @media print{
-  .top{position:static}
+  :root{
+    color-scheme:light;
+    --bg:#ffffff;
+    --panel:#ffffff;
+    --raised:#f3f4f7;
+    --line:oklch(0.2 0.02 270 / 16%);
+    --fg:oklch(0.2 0.02 270);
+    --muted:oklch(0.45 0.015 270);
+    --cyan:oklch(0.52 0.15 235);
+    --magenta:oklch(0.53 0.24 354);
+    --green:oklch(0.52 0.13 163);
+    --amber:oklch(0.58 0.14 70);
+    --violet:oklch(0.5 0.2 293);
+  }
+  html{scroll-behavior:auto}
+  body{background:#fff;font-size:14px}
+  .top{position:static;background:none;border:0;backdrop-filter:none}
+  .top nav{display:none}
+  .top .wrap{height:auto;padding-top:4px}
+  .hero{padding:24px 0 32px}
   .hero::before,.hero::after{display:none}
-  section{padding:40px 0;break-inside:avoid-page}
+  section{padding:32px 0;break-inside:auto}
+  .sec-head{margin-bottom:24px}
+  h1{font-size:54px}
+  h2{font-size:30px}
+  .card,.metric,.pn,.step,.row,.tl>li,.q,.kpi,.principles>div,.tramos li,.quote,.note{break-inside:avoid}
+  .grid,.vs,.kpis,.loop,.principles,.list,.legend,.chips{break-inside:avoid}
+  .grid{background:transparent;border:0;gap:6px}
+  .grid>*{border:1px solid var(--line)}
+  h2,h3,h4,.sec-head,.pgroup{break-after:avoid}
+  a{color:var(--fg)}
 }
 </style>
 </head>
@@ -296,7 +325,7 @@ footer b{color:var(--fg)}
     <div class="kpis" role="list">
       <div class="kpi" role="listitem"><b>4 olas</b><span>al año para MG Motor Chile, con contrato anual adjudicado en licitación</span></div>
       <div class="kpi" role="listitem"><b>≈1,5 TB</b><span>de material por ola: 6 bloques, unas 60 personas y unas 15 horas de audio</span></div>
-      <div class="kpi" role="listitem"><b>3,2 %</b><span>de error de transcripción en español chileno, local y sin costo por uso</span></div>
+      <div class="kpi" role="listitem"><b>92 %</b><span>de acierto al reconocer la voz de cada persona, con tres modelos combinados, en el propio equipo</span></div>
       <div class="kpi" role="listitem"><b>≤ 30 min</b><span>de revisión humana por bloque: la meta que guía el diseño</span></div>
     </div>
   </div>
@@ -401,7 +430,7 @@ footer b{color:var(--fg)}
         </dl></div>
       <div class="card q hot"><span class="k">Durante</span><span class="when">T0 · en la mesa</span><h3>Qué mueve la experiencia</h3>
         <dl>
-          <dt>Qué se pregunta</dt><dd>Las tres o cuatro actitudes del brief, al empezar y al terminar. Notas de 1 a 7 dichas en voz alta, votos en la pizarra y una encuesta individual frente al auto: nota por modelo y dimensión, intención y disposición a pagar.</dd>
+          <dt>Qué se pregunta</dt><dd>Las tres o cuatro actitudes del brief, al empezar y al terminar. Notas de 1 a 5 dichas en voz alta, votos en la pizarra y una encuesta individual frente al auto: nota por modelo y dimensión, intención y disposición a pagar.</dd>
           <dt>Por qué</dt><dd class="why">La nota individual se da antes de que el grupo arrastre. Las actitudes al inicio y al cierre muestran qué cambió la experiencia. Y la nota dicha en voz alta queda pegada a la cita: el número y su razón, juntos.</dd>
         </dl></div>
       <div class="card q"><span class="k">Después</span><span class="when">T+30 · recontacto con su link</span><h3>Qué se sostiene</h3>
@@ -458,7 +487,8 @@ footer b{color:var(--fg)}
       <div class="pn"><span class="who">Operador</span><h3>Vocabularios</h3><p>Las palabras nuevas de cada ola llegan como propuesta y se aceptan o rechazan, igual que los cambios de guía.</p></div>
     </div>
 
-    <p class="note"><b>Dónde están hoy.</b> Todos estos paneles están construidos y tienen pruebas automáticas, y los del operador y el cliente están en producción. Ninguna ola real los ha recorrido completos todavía: S3, del 27 al 29 de octubre, es la primera. Los que piden datos de participantes reales esperan la revisión legal del consentimiento.</p>
+    <p class="note"><b>Dónde están hoy.</b> Todos estos paneles están construidos y tienen pruebas automáticas, y los del operador y el cliente están en producción. Ninguna ola real los ha recorrido completos todavía: S3, del 3 al 5 de noviembre, es la primera. Los que piden datos de participantes reales esperan la revisión legal del consentimiento.</p>
+    <p class="note" style="border-left-color:var(--cyan)"><b>En el equipo del operador.</b> El motor local ya tiene su propia página de cada ola, con cinco pestañas: guía de la moderadora, formularios, convocatoria, participantes y procesamiento. Así la ola se prepara y se procesa desde la misma máquina donde está el material.</p>
   </div>
 </section>
 
@@ -468,10 +498,10 @@ footer b{color:var(--fg)}
     <div class="grid g3">
       <div class="card hot"><span class="k">Evidencia</span><h3>Cada cita, verificable</h3><p>Ninguna cita sale si no existe letra por letra en la transcripción de esa persona, y si no está claro quién la dijo. El cliente puede ir del informe al segundo exacto del video.</p></div>
       <div class="card"><span class="k">Captura</span><h3>Un micrófono por persona y una cámara 360</h3><p>La cámara es el reloj maestro. Con ella, cada micrófono se sincroniza por el audio y cada voz se separa de las demás, algo que una grabación de sala no permite.</p></div>
-      <div class="card"><span class="k">Costo</span><h3>Local y sin costo por uso</h3><p>Sincronizar, limpiar y transcribir corre en un MacBook. Solo la redacción y la traducción usan una IA externa, con un tope de 10 dólares por bloque y el gasto registrado.</p></div>
-      <div class="card"><span class="k">Privacidad</span><h3>El material no sale de la máquina</h3><p>Las voces, las huellas de voz y los contactos de las personas nunca suben a la nube. Las citas respetan el consentimiento de cada una, conforme a la Ley 21.719.</p></div>
+      <div class="card"><span class="k">Costo</span><h3>Local y sin costo por uso</h3><p>Sincronizar, separar voces, limpiar y transcribir corre en un MacBook. Una IA externa solo redacta, traduce, corrige la transcripción y analiza la guía, con un tope de 10 dólares por bloque y cada gasto registrado.</p></div>
+      <div class="card"><span class="k">Privacidad</span><h3>El material no sale de la máquina</h3><p>El audio, el video y las huellas de voz nunca suben a la nube. Lo que va a la IA de la guía sale con seudónimos. Los contactos para convocar se borran 30 días después de la ola, y las citas respetan el consentimiento de cada persona.</p></div>
       <div class="card"><span class="k">Idioma</span><h3>Español de Chile</h3><p>Vocabularios propios de modismos, del producto y de cada ola. El inglés sale de las mismas afirmaciones que el español, no de una traducción posterior.</p></div>
-      <div class="card"><span class="k">Aprendizaje</span><h3>Cada ola mejora la siguiente</h3><p>La guía mide cómo se condujo la sesión y propone cambios. El plan de acción y el recontacto miden si el estudio movió algo en la marca.</p></div>
+      <div class="card"><span class="k">Aprendizaje</span><h3>Cada ola mejora la siguiente</h3><p>La guía compara cómo funcionó cada bloque en cada mesa y propone cambios con evidencia; una persona aprueba cada uno. El plan de acción y el recontacto miden si el estudio movió algo en la marca.</p></div>
     </div>
     <div class="body indent" style="margin-top:32px">
       <p><b>El valor de fondo:</b> un estudio cualitativo deja de depender de semanas de trabajo artesanal de una persona y pasa a ser un proceso con resultados medidos, repetible ola tras ola y transferible a otros clientes y rubros.</p>
@@ -486,7 +516,7 @@ footer b{color:var(--fg)}
     <table class="tbl">
       <thead><tr><th>Entrega</th><th>Qué es</th><th>Formato</th></tr></thead>
       <tbody>
-        <tr><td><b>Videos 360</b></td><td>Un video por bloque, completo, con subtítulos en inglés incrustados</td><td class="mono">MP4 H.264 · 2560×1280 · ≤ 3 GB</td></tr>
+        <tr><td><b>Videos 360</b></td><td>Un video por bloque, completo, con subtítulos en inglés incrustados</td><td class="mono">MP4 HEVC · 3840×1920 · 12 Mb/s</td></tr>
         <tr><td><b>Deck</b></td><td>La presentación de hallazgos, en español y en inglés, con la marca del cliente</td><td class="mono">PPTX + PDF · ~19 láminas</td></tr>
         <tr><td><b>Informe</b></td><td>Tesis, hallazgos clave, una sección por acto de la guía, pilares, recomendaciones, perfil de la muestra y método</td><td class="mono">PDF A4 · ~20 páginas · ES + EN</td></tr>
         <tr><td><b>Paquete</b></td><td>Instrucciones de uso y las tipografías de la marca</td><td class="mono">Carpeta</td></tr>
@@ -536,7 +566,7 @@ footer b{color:var(--fg)}
     <div class="grid g2">
       <div class="card"><span class="k">El punto de partida</span><h3>La pregunta de negocio</h3><p>Antes de diseñar nada, el cliente declara qué decisión va a tomar y qué resultado le haría cambiar de opinión. Si ningún resultado lo haría, el estudio no sirve, y es mejor saberlo antes.</p></div>
       <div class="card"><span class="k">Un brief, tres instrumentos</span><h3>Guía, encuesta e informe salen de lo mismo</h3><p>La estructura del informe se declara antes de la sesión, desde la pregunta y no desde el material. Así cada hallazgo llega a su lugar, sin aplastar lo que nadie preguntó.</p></div>
-      <div class="card"><span class="k">En la mesa</span><h3>Técnica de grupo nominal</h3><p>Cada pregunta tiene una forma: <b>solo</b> (cada uno piensa por su cuenta), <b>vuelta</b> (todos responden por turno), <b>conversa</b> (discusión abierta) y <b>nota</b> (una calificación de 1 a 7 dicha en voz alta). Así nadie queda fuera y nadie arrastra al grupo.</p></div>
+      <div class="card"><span class="k">En la mesa</span><h3>Técnica de grupo nominal</h3><p>Cada pregunta tiene una forma: <b>solo</b> (cada uno piensa por su cuenta), <b>vuelta</b> (todos responden por turno), <b>conversa</b> (discusión abierta) y <b>nota</b> (una calificación de 1 a 5 dicha en voz alta). Así nadie queda fuera y nadie arrastra al grupo.</p></div>
       <div class="card"><span class="k">Dos mesas</span><h3>Clientes y no clientes</h3><p>Los no clientes evalúan el producto a ciegas y después se revela la marca; los clientes hablan de su lealtad. Cada hallazgo declara de qué segmento sale y con cuánta gente.</p></div>
       <div class="card"><span class="k">Honestidad</span><h3>Dirección y magnitud, nunca significancia</h3><p>Una muestra cualitativa no se presenta como estadística. El informe declara el n de cada número, cuánto se desvió de las cuotas y marca la evidencia delgada.</p></div>
       <div class="card"><span class="k">El anillo de acción</span><h3>¿Se movió la percepción?</h3><p>Pregunta de negocio, estudio, hallazgos, plan de acción y vuelta a medir con los mismos criterios. En la ola siguiente se mide qué se hizo, y la marca le devuelve al grupo lo que cambió: «dijiste, hicimos».</p></div>
@@ -559,20 +589,21 @@ footer b{color:var(--fg)}
 <section id="tecnica">
   <div class="wrap">
     <div class="sec-head"><span class="n">11</span><div><h2>Metodología técnica</h2><p>Una cadena de módulos que se construyen uno a la vez. Ninguno se da por terminado hasta pasar su prueba de aceptación sobre el material real de la segunda ola (S2).</p></div></div>
-    <div class="legend"><span class="st ok">Comprobado en S2</span><span class="st wip">En construcción</span><span class="st plan">Planificado</span></div>
+    <div class="legend"><span class="st ok">Aceptado sobre S2</span><span class="st wip">En validación o en construcción</span><span class="st plan">Planificado</span></div>
     <div class="chain">
       <div class="step"><span class="code">M1</span><div><h3>Inventario</h3><p>Lee la ola desde el disco, solo lectura, y detecta archivos dañados o incompletos.</p><div class="res">526 de 526 archivos · 654 GB en 9,8 s</div></div><span class="st ok">Comprobado</span></div>
       <div class="step"><span class="code">M2</span><div><h3>Cámara</h3><p>Une los fragmentos de la cámara 360 y su audio, que se vuelve el reloj maestro del bloque. Corrige dos defectos de la cámara.</p><div class="res">174 s de silencio digital eliminados</div></div><span class="st ok">Comprobado</span></div>
       <div class="step"><span class="code">M3</span><div><h3>Ventana del bloque</h3><p>Propone el inicio y el fin útiles de cada bloque y descarta los falsos arranques.</p></div><span class="st ok">Comprobado</span></div>
-      <div class="step"><span class="code">M4</span><div><h3>Sincronía</h3><p>Pone cada micrófono en el reloj de la cámara solo por el audio, con deriva de reloj por grabadora y controles en cada unión. Lo que no calza queda en duda.</p><div class="res">±20 ms frente a los mapas de S2 · cobertura por bloque de 87,8 % a 99,7 %</div></div><span class="st ok">Comprobado</span></div>
-      <div class="step"><span class="code">M5</span><div><h3>Turnos</h3><p>Quién habla en cada momento, por el nivel de cada micrófono, con las dudas y las voces sin micrófono marcadas.</p><div class="res">92,6 % de acuerdo con las decisiones humanas de S2</div></div><span class="st ok">Comprobado</span></div>
-      <div class="step"><span class="code">M5c</span><div><h3>Huella de voz</h3><p>Sugiere de quién es cada voz, sacada del audio de la cámara. Nunca reasigna sola: propone, y una persona confirma.</p><div class="res">confirma 88 de 89 dueños · corrige 8 de 15 errores silenciosos</div></div><span class="st ok">Comprobado</span></div>
-      <div class="step"><span class="code">M5b</span><div><h3>Pistas limpias</h3><p>Una pista de audio por persona: cada turno desde su propio micrófono, o desde la cámara si no lo tiene, y silencio en el resto.</p><div class="res">transcribe mejor que el original: 84 % contra 80 %</div></div><span class="st ok">Comprobado</span></div>
-      <div class="step"><span class="code">M5d</span><div><h3>Postproducción local</h3><p>Cadena tipo podcast en el propio equipo: nivel por turno, reducción de ruido y normalización.</p><div class="res">de 4 h a entre 13 y 20 min de proceso</div></div><span class="st wip">En validación</span></div>
-      <div class="step"><span class="code">M6</span><div><h3>Transcripción</h3><p>Whisper large-v3 en el chip del Mac, con el vocabulario chileno y del rubro, tramo por tramo y con el tiempo de cámara de cada palabra.</p><div class="res">3,2 % de error en 3 ventanas revisadas a mano · sin costo</div></div><span class="st wip">En validación</span></div>
-      <div class="step"><span class="code">M7</span><div><h3>Revisión</h3><p>Un reproductor con el video 360, una pista por micrófono y la cola de dudas ordenada por impacto. Cada decisión se guarda en un registro que nunca se reescribe.</p><div class="res">audio sincronizado con el video a menos de 40 ms</div></div><span class="st wip">En construcción</span></div>
-      <div class="step"><span class="code">M8</span><div><h3>Subtítulos y video</h3><p>Subtítulos en inglés incrustados en el video 360 de cada bloque. Es el primer entregable al cliente.</p></div><span class="st plan">Siguiente</span></div>
-      <div class="step"><span class="code">M9–12</span><div><h3>Encuesta, análisis, informe, deck y paquete</h3><p>Bases con su n real, banco de citas, afirmaciones con las ocho compuertas, render en PDF y PPT en dos idiomas, y la ola completa con un solo comando.</p></div><span class="st plan">Planificado</span></div>
+      <div class="step"><span class="code">M4</span><div><h3>Sincronía</h3><p>Pone cada micrófono en el reloj de la cámara solo por el audio, con deriva de reloj por grabadora y controles en cada unión. Lo que no calza queda en duda.</p><div class="res">148 de 163 tramos a ±20 ms de los mapas de S2 · 79 % del habla de la ola sincronizada (meta: 80 %)</div></div><span class="st ok">Comprobado</span></div>
+      <div class="step"><span class="code">M5</span><div><h3>Turnos</h3><p>Quién habla en cada momento, por el nivel de cada micrófono, con las dudas y las voces sin micrófono marcadas.</p><div class="res">92,6 % de acuerdo con las decisiones humanas de S2, donde el micrófono está sincronizado</div></div><span class="st wip">En validación</span></div>
+      <div class="step"><span class="code">M5c</span><div><h3>Huella de voz y pasada automática</h3><p>Tres modelos de voz combinados sugieren de quién es cada turno, y una pasada automática asigna solo lo seguro. Lo demás queda como duda para una persona.</p><div class="res">92,0 % de acierto con tres modelos (301 turnos), contra 88,4 % con uno · 93 de 93 en la prueba dejando uno fuera</div></div><span class="st wip">En validación</span></div>
+      <div class="step"><span class="code">M5b</span><div><h3>Pistas limpias</h3><p>Una pista de audio por persona: cada turno desde su propio micrófono, o desde la cámara si no lo tiene, y silencio en el resto.</p><div class="res">transcribe mejor que el original: 84 % contra 80 %</div></div><span class="st wip">En validación</span></div>
+      <div class="step"><span class="code">M5d</span><div><h3>Postproducción local</h3><p>Cadena tipo podcast en el propio equipo: normalización, limpieza y nivel por turno.</p><div class="res">unos 26 min por bloque, las tres etapas</div></div><span class="st wip">En validación</span></div>
+      <div class="step"><span class="code">M6</span><div><h3>Transcripción y corrección</h3><p>Whisper large-v3 en el chip del Mac, con el vocabulario chileno y del rubro. Después, una IA corrige con reglas estrictas: pocas palabras por arreglo, el original intacto y lo dudoso queda para escuchar y decidir.</p><div class="res">un bloque completo de S2: 1.544 tramos y 23.386 palabras, en el equipo</div></div><span class="st wip">En validación</span></div>
+      <div class="step"><span class="code">M7</span><div><h3>Revisión</h3><p>Un reproductor con el video 360, una pista por micrófono y pestañas de sincronía, diarización, limpieza y transcripción. Cada decisión se guarda en un registro que nunca se reescribe, y un control a ciegas mide la calidad.</p><div class="res">audio sincronizado con el video a menos de 40 ms</div></div><span class="st wip">En construcción</span></div>
+      <div class="step"><span class="code">M8</span><div><h3>Video 360 y subtítulos</h3><p>El master 360 de cada bloque, importado y verificado, con subtítulos en inglés incrustados. Es el primer entregable al cliente.</p><div class="res">master HEVC 3840×1920 listo · 18 de 18 ventanas verificadas · faltan los subtítulos</div></div><span class="st wip">En construcción</span></div>
+      <div class="step"><span class="code">M9</span><div><h3>Encuestas y bases</h3><p>Previa, durante y post separadas por segmento, tarjetas con código QR por asiento y bases con su n real. Ninguna pregunta cambia de sentido después de tener respuestas.</p><div class="res">falta la prueba en vivo</div></div><span class="st wip">En construcción</span></div>
+      <div class="step"><span class="code">M10–12</span><div><h3>Análisis, informe, deck y paquete</h3><p>Banco de citas, afirmaciones con las ocho compuertas, render en PDF y PPT en dos idiomas, y la ola completa con un solo comando.</p></div><span class="st plan">Planificado</span></div>
       <div class="step"><span class="code">M13–14</span><div><h3>Aplicación de escritorio</h3><p>La aplicación que envuelve el motor: elegir carpeta, procesar, revisar y entregar.</p></div><span class="st plan">Planificado</span></div>
     </div>
     <div class="principles">
@@ -595,9 +626,9 @@ footer b{color:var(--fg)}
       <li><span class="v">3</span><div class="when">abril – septiembre</div><h3>La app de ingesta <small>wav-ingest</small></h3><p>Una aplicación de escritorio para transcodificar el material en el equipo y subirlo a la nube.</p><p class="lesson"><b>Lección:</b> 1,5 TB por ola no se suben. Lo pesado se procesa donde está el material.</p></li>
       <li><span class="v">4</span><div class="when">junio – septiembre</div><h3>El monorepo <small>wav</small></h3><p>Juntó lo anterior y armó un pipeline local, después de abandonar el dashboard.</p><p class="lesson"><b>Lección:</b> nunca produjo el informe, y las decisiones humanas no llegaban al entregable. La decisión de una persona tiene que llegar al final de la cadena.</p></li>
       <li><span class="v">5</span><div class="when">12 – 16 septiembre</div><h3>La reconstrucción web <small>wav-intelligencev2</small></h3><p>Una web limpia para un solo cliente, con una «torre de control».</p><p class="lesson"><b>Lección:</b> separar web y escritorio era el corte equivocado.</p></li>
-      <li><span class="v">6</span><div class="when">24 septiembre – 1 octubre</div><h3>La plataforma completa <small>wav-research</small></h3><p>Desde cero, con el conocimiento de los cuatro repos: el motor local y la plataforma de la ola en línea. Un diseño con cerca de 30 decisiones registradas, 2.565 pruebas en Mac, Windows y Linux, y la parte en línea en producción.</p><p class="lesson"><b>Lección:</b> todo el ancho construido, pero los motores del camino crítico sin terminar. Primero la cadena, después lo demás.</p></li>
+      <li><span class="v">6</span><div class="when">24 septiembre – 1 octubre</div><h3>La plataforma completa <small>wav-research</small></h3><p>Desde cero, con el conocimiento de los cuatro repos: el motor local y la plataforma de la ola en línea. Un diseño con 31 decisiones registradas, más de 2.600 pruebas automáticas en Mac, Windows y Linux, y la parte en línea en producción.</p><p class="lesson"><b>Lección:</b> todo el ancho construido, pero los motores del camino crítico sin terminar. Primero la cadena, después lo demás.</p></li>
       <li><span class="v">7</span><div class="when">1 octubre</div><h3>El diseño previo <small>wav-research-2</small></h3><p>Un diseño de un día: la plataforma primero, sobre los resultados de S2 que ya existían, a costo cero.</p><p class="lesson"><b>Lección:</b> ni siquiera la plataforma primero. El motor primero, módulo por módulo.</p></li>
-      <li class="now"><span class="v">8</span><div class="when">2 octubre – hoy</div><h3>El motor primero <small>wav-research-3</small></h3><p>El procesamiento antes que cualquier pantalla, un módulo a la vez y cada uno aceptado sobre el material real de S2. En tres días: 122 cambios, 204 pruebas en verde, y la cadena completa desde el disco hasta la transcripción.</p><p class="lesson"><b>Lo que cambió:</b> el orden. Siete versiones empezaron por las pantallas; esta empieza por la cadena que convierte la grabación en citas atribuidas.</p></li>
+      <li class="now"><span class="v">8</span><div class="when">2 octubre – hoy</div><h3>El motor primero <small>wav-research-3</small></h3><p>El procesamiento antes que cualquier pantalla, un módulo a la vez y cada uno aceptado sobre el material real de S2. En siete días: 546 cambios, unas 2.170 pruebas automáticas, la cadena completa desde el disco hasta la transcripción corregida, y la ola entera —guía, formularios y convocatoria— manejada desde el mismo equipo.</p><p class="lesson"><b>Lo que cambió:</b> el orden. Siete versiones empezaron por las pantallas; esta empieza por la cadena que convierte la grabación en citas atribuidas.</p></li>
     </ol>
     <h4>Lo que siete versiones dejaron como regla</h4>
     <div class="grid g3">
@@ -621,18 +652,25 @@ footer b{color:var(--fg)}
 
     <h4>El motor, en números</h4>
     <div class="grid g4">
-      <div class="metric"><b class="c">±20 ms</b><span>sincronía de cada micrófono frente a los mapas de S2</span><small>M4 · comprobado</small></div>
-      <div class="metric"><b class="c">87,8–99,7 %</b><span>del habla ubicada queda sincronizada, según el bloque</span><small>M4b · comprobado</small></div>
-      <div class="metric"><b class="c">+4,3 h</b><span>de audio sincronizado en un bloque, y 0,98 h de conflictos llevadas a cero</span><small>bloque d1b2 · comprobado</small></div>
-      <div class="metric"><b class="c">92,6 %</b><span>de acuerdo con las decisiones humanas sobre quién habla</span><small>M5 · comprobado</small></div>
-      <div class="metric"><b class="g">88 de 89</b><span>dueños de voz confirmados por la huella de voz</span><small>M5c · comprobado</small></div>
-      <div class="metric"><b class="g">8 de 15</b><span>errores silenciosos corregidos con la voz tomada de la cámara, contra 3 de 15 con la de los micrófonos</span><small>M5c · comprobado</small></div>
-      <div class="metric"><b class="g">215 turnos</b><span>reconocidos a partir de 2 muestras de voz de una persona sin micrófono</span><small>M5c · comprobado</small></div>
-      <div class="metric"><b class="g">3,2 %</b><span>de error de transcripción, frente a 12,6 % del modelo rápido</span><small>M6 · 3 ventanas revisadas a mano</small></div>
-      <div class="metric"><b class="c">526 de 526</b><span>archivos de la ola inventariados: 654 GB en 9,8 s</span><small>M1 · comprobado</small></div>
-      <div class="metric"><b class="c">4 h → 20 min</b><span>de postproducción de audio al procesar solo la voz</span><small>M5d · en validación</small></div>
-      <div class="metric"><b class="c">&lt; 40 ms</b><span>entre el audio de cada micrófono y el video en el reproductor</span><small>M7 · comprobado</small></div>
-      <div class="metric"><b class="c">US$ 0</b><span>de costo por uso en sincronía, limpieza y transcripción</span><small>todo corre en el equipo</small></div>
+      <div class="metric"><b class="c">148 de 163</b><span>tramos de sincronía a ±20 ms de los mapas de S2</span><small>M4 · aceptado</small></div>
+      <div class="metric"><b class="c">79 %</b><span>del habla de la ola queda sincronizada; la meta es 80 %</span><small>M4b · medido</small></div>
+      <div class="metric"><b class="c">+4,3 h</b><span>de audio sincronizado en un bloque, y 0,98 h de conflictos llevadas a cero</span><small>bloque d1b2 · medido</small></div>
+      <div class="metric"><b class="c">92,6 %</b><span>de acuerdo con las decisiones humanas sobre quién habla, donde el micrófono está sincronizado</span><small>M5 · en validación</small></div>
+      <div class="metric"><b class="g">92,0 %</b><span>de acierto al reconocer la voz con tres modelos combinados, contra 88,4 % con uno</span><small>M5c · 301 turnos de S2</small></div>
+      <div class="metric"><b class="g">93 de 93</b><span>turnos bien asignados por la pasada automática, en la prueba dejando uno fuera</span><small>M5c · bloque d2b2</small></div>
+      <div class="metric"><b class="g">8 de 15</b><span>errores silenciosos corregidos con la voz tomada de la cámara, contra 3 de 15 con la de los micrófonos</span><small>M5c · medido</small></div>
+      <div class="metric"><b class="g">25,5 → 3,2 min</b><span>para reconocer las voces de un bloque, al mover un modelo al chip del Mac</span><small>M5c · bloque d3b2</small></div>
+      <div class="metric"><b class="c">526 de 526</b><span>archivos de la ola inventariados: 654 GB en 9,8 s</span><small>M1 · aceptado</small></div>
+      <div class="metric"><b class="c">23.386</b><span>palabras de un bloque completo de S2, transcritas en el equipo en 1.544 tramos</span><small>M6 · en validación</small></div>
+      <div class="metric"><b class="c">18 de 18</b><span>ventanas del master 360 verificadas contra el audio de la cámara</span><small>M8 · en construcción</small></div>
+      <div class="metric"><b class="c">US$ 0</b><span>de costo por uso en sincronía, voces, limpieza y transcripción</span><small>todo corre en el equipo</small></div>
+    </div>
+
+    <h4>WAV Research 3, en una semana</h4>
+    <div class="grid g3">
+      <div class="metric"><b class="m">546</b><span>cambios entre el 2 y el 8 de octubre de 2026</span><small>wav-research-3</small></div>
+      <div class="metric"><b class="m">≈ 2.170</b><span>pruebas automáticas escritas, en Python, JavaScript y la consola de convocatoria</span><small>wav-research-3 · contadas en el código</small></div>
+      <div class="metric"><b class="m">5</b><span>pestañas por ola en el equipo del operador: guía, formularios, convocatoria, participantes y procesamiento</span><small>wav-research-3</small></div>
     </div>
 
     <h4>Lo que se probó y se descartó, con datos</h4>
@@ -646,7 +684,7 @@ footer b{color:var(--fg)}
 
     <h4>La plataforma de la ola</h4>
     <div class="grid g3">
-      <div class="metric"><b class="c">2.565</b><span>pruebas automáticas, en verde en Mac, Windows y Linux</span><small>wav-research</small></div>
+      <div class="metric"><b class="c">2.600+</b><span>pruebas automáticas, en Mac, Windows y Linux</span><small>wav-research</small></div>
       <div class="metric"><b class="c">8</b><span>compuertas del informe, con render de PDF y PPT en español e inglés</span><small>wav-research</small></div>
       <div class="metric"><b class="c">T−30 → T+45</b><span>un panel en línea para cada paso de la ola, del primer cuestionario a la guía que aprende</span><small>wav-research · en producción</small></div>
     </div>
@@ -657,9 +695,9 @@ footer b{color:var(--fg)}
   <div class="wrap">
     <div class="sec-head"><span class="n">14</span><div><h2>Lo que viene</h2><p>El orden está fijado por la dependencia, no por el calendario. Si la plataforma no está lista para una ola, esa ola se procesa a mano, como S1 y S2.</p></div></div>
     <div class="grid g2">
-      <div class="card hot"><span class="k">Ahora</span><h3>Un bloque de punta a punta</h3><p>El bloque d2b2 de S2 completo, desde el disco hasta el video con subtítulos en inglés, para aprender en el material real antes de escalar.</p></div>
+      <div class="card hot"><span class="k">Ahora</span><h3>Subtítulos y encuestas en vivo</h3><p>Los subtítulos en inglés sobre el master 360 de S2, y las encuestas de S3 probadas con teléfonos reales antes de la sala.</p></div>
       <div class="card"><span class="k">Después</span><h3>Informe, deck y una sola herramienta</h3><p>Análisis, banco de citas, informe y deck con sus compuertas, y el motor unido a los paneles de la ola.</p></div>
-      <div class="card"><span class="k">27 – 29 octubre 2026</span><h3>S3, el primer círculo completo</h3><p>La primera ola que recorre el círculo entero, del cuestionario previo al recontacto, con un protocolo de captura nuevo. Antes, la revisión legal del consentimiento.</p></div>
+      <div class="card"><span class="k">3 – 5 noviembre 2026</span><h3>S3, el primer círculo completo</h3><p>Seis mesas: cuatro de no clientes, por género y edad, y dos de clientes. Invitaciones que no nombran la marca, tres autos sin logo y el círculo entero, del cuestionario previo al recontacto. Antes, la revisión legal del consentimiento.</p></div>
       <div class="card"><span class="k">La ola siguiente</span><h3>La primera vuelta medida</h3><p>Mismos criterios, muestra nueva y las acciones de S3 medidas: la primera vez que el círculo se cierra con datos.</p></div>
     </div>
   </div>
@@ -670,7 +708,7 @@ footer b{color:var(--fg)}
 <footer>
   <div class="wrap">
     <div><b>WAV Research</b><br>Un producto de We Are Vision · Santiago de Chile · <a href="https://wearevision.cl">wearevision.cl</a></div>
-    <div>Estado al 4 de octubre de 2026. Las cifras salen de los repositorios del proyecto y de mediciones sobre la segunda ola de MG Motor Chile (S2). Ningún dato personal de participantes aparece en esta página.</div>
+    <div>Estado al 9 de octubre de 2026. Las cifras salen de los repositorios del proyecto y de mediciones sobre la segunda ola de MG Motor Chile (S2). Ningún dato personal de participantes aparece en esta página.</div>
   </div>
 </footer>
 
